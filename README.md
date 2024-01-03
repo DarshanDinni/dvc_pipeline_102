@@ -38,17 +38,14 @@ I am currently working on the `Red Wine Quality` dataset. These datasets involve
     ```
     python train.py
     ```
-    
+
 3. **Model Evaluation:** Assess the model's performance and accuracy in predicting wine quality.
 
 Through the use of a DVC pipeline, we aim to achieve not only a well-organized and versioned project but also a reproducible and scalable workflow for future enhancements and experiments.
 
-#### Step 1. Install the DVC library
-```
-pip install dvc
-```
+### Library dependencies:
+Ensure you have the required dependencies installed before running the project. All the necessary libraries are listed in the `requirements.txt` file. Install them using:
 
-#### Step 2: Initialize DVC
-``` 
-dvc init
+```
+pip install -r requirements.txt
 ```
