@@ -39,7 +39,11 @@ I am currently working on the `Red Wine Quality` dataset. These datasets involve
     python train.py
     ```
 
-3. **Model Evaluation:** Assess the model's performance and accuracy in predicting wine quality.
+3. **Evaluation (`evaluate.py`):**
+The `evaluate.py` script is designed to evaluate the performance of the trained model. It loads the model and data specified in the `params.yaml` file and produces evaluation metrics. The results are then saved to a `results.yaml` file.
+    ```
+    python evaluate.py
+    ```
 
 Through the use of a DVC pipeline, we aim to achieve not only a well-organized and versioned project but also a reproducible and scalable workflow for future enhancements and experiments.
 
