@@ -47,6 +47,23 @@ The `evaluate.py` script is designed to evaluate the performance of the trained 
 
 Through the use of a DVC pipeline, we aim to achieve not only a well-organized and versioned project but also a reproducible and scalable workflow for future enhancements and experiments.
 
+4. **DVC Pipeline (`dvc.yaml`)**
+The `dvc.yaml` file defines the DVC pipeline for the complete data processing cycle. It specifies the dependencies between different stages of the pipeline, ensuring that each step is executed in the correct order.
+
+    #### Running the Pipeline:
+    ```
+    dvc repro
+    ```
+    This command triggers the DVC pipeline, executing the necessary steps to reproduce the entire data processing cycle.
+
+    #### Pipeline Stages:
+    - **prepare_data:** Extracts and preprocesses the raw data. Generates `train.csv` for model training.
+    - **train_model:** Trains the machine learning model using `train.csv`.Outputs the trained model.
+    - **evaluate_model:** Evaluates the model performance using the `test.csv`. Saves the evaluation results to `results.yaml`.
+    
+    **Note:** Ensure that your data and model configurations in params.yaml are set appropriately before running the DVC pipeline.
+
+
 ### Library dependencies:
 Ensure you have the required dependencies installed before running the project. All the necessary libraries are listed in the `requirements.txt` file. Install them using:
 

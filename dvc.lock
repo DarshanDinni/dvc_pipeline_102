@@ -1,0 +1,90 @@
+schema: '2.0'
+stages:
+  prepare_data:
+    cmd: python ./prepare_data.py
+    deps:
+    - path: ./data/data.csv
+      hash: md5
+      md5: 6a883fd98624e18c0b7ce251f4fab4fb
+      size: 100951
+    - path: ./prepare_data.py
+      hash: md5
+      md5: 6333ed537c662f211b0a7b0217c11e87
+      size: 1065
+    params:
+      params.yaml:
+        data:
+          csv_file_path: ./data/data.csv
+          test_set_ratio: 0.3
+          train_csv_save_path: ./data/train.csv
+          test_csv_save_path: ./data/test.csv
+    outs:
+    - path: ./data/test.csv
+      hash: md5
+      md5: 94dd090424b0293eb08b4f8f5c6404ef
+      size: 28668
+    - path: ./data/train.csv
+      hash: md5
+      md5: e29455b7c811954de6edfbff2eb54c59
+      size: 66574
+  train:
+    cmd: python ./train.py
+    deps:
+    - path: ./data/test.csv
+      hash: md5
+      md5: 94dd090424b0293eb08b4f8f5c6404ef
+      size: 28668
+    - path: ./data/train.csv
+      hash: md5
+      md5: e29455b7c811954de6edfbff2eb54c59
+      size: 66574
+    - path: ./train.py
+      hash: md5
+      md5: e6a4521ad981d4c8a3c21ba396e6d75c
+      size: 1824
+    params:
+      params.yaml:
+        train:
+          model_choice: svm
+          logistic_regression:
+            penalty: l2
+            C: 1.0
+            solver: lbfgs
+          svm:
+            kernel: rbf
+            C: 1.0
+            degree: 3
+            gamma: scale
+          knn:
+            nearest_neighbors: 5
+          model_save_path: ./models/model.joblib
+    outs:
+    - path: ./models/model.joblib
+      hash: md5
+      md5: 3b3334c35f1cd09c238745caa1beee6e
+      size: 37915
+  evaluate:
+    cmd: python ./evaluate.py
+    deps:
+    - path: ./data/test.csv
+      hash: md5
+      md5: 94dd090424b0293eb08b4f8f5c6404ef
+      size: 28668
+    - path: ./evaluate.py
+      hash: md5
+      md5: 95830babaab81285c11b0a1f32d270e3
+      size: 1346
+    - path: ./models/model.joblib
+      hash: md5
+      md5: 3b3334c35f1cd09c238745caa1beee6e
+      size: 37915
+    params:
+      params.yaml:
+        evaluate:
+          metrics: accuracy_score
+          evaluate_save_path: ./results.yaml
+    outs:
+    - path: ./results.yaml
+      hash: md5
+      md5: acc2dbe75e3263a6e828a66aacdfc5b8
+      size: 26
