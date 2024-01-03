@@ -25,3 +25,7 @@ train:
     nearest_neighbors: 5
 
   model_save_path: ./models/model.joblib
+
+evaluate:
+  metrics: accuracy_score
+  evaluate_save_path: ./results.yaml
