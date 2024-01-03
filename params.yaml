@@ -3,3 +3,23 @@ data:
   test_set_ratio: 0.3
   train_csv_save_path: ./data/train.csv
   test_csv_save_path: ./data/test.csv
+
+train:
+  # Logistic regression classifier hyperparameters
+  lr:
+    penalty: l1
+    C: 1.0
+    solver: lbfgs
+
+  # SVM classifier hyperparameters
+  svm:
+    kernel: rbf
+    C: 1.0
+    degree: 3
+    gamma: scale
+
+  # K nearest neighbors classifier hyperparameters
+  knn:
+    nearest_neighbors: 5
+
+  model_save_path: ./models/model.joblib
