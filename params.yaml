@@ -5,9 +5,11 @@ data:
   test_csv_save_path: ./data/test.csv
 
 train:
+  model_choice: svm
+
   # Logistic regression classifier hyperparameters
-  lr:
-    penalty: l1
+  logistic_regression:
+    penalty: l2
     C: 1.0
     solver: lbfgs
 

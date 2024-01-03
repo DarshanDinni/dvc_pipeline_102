@@ -25,8 +25,12 @@ def prepare_data(config):
 
 
 # Main function
-if __name__ == "__main__":
+def main():
     # Reading the params file
     with open("params.yaml", "r") as file:
         config = yaml.safe_load(file)
         prepare_data(config=config)
+
+
+if __name__ == "__main__":
+    main()

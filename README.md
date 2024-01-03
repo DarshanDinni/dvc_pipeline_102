@@ -28,8 +28,17 @@ I am currently working on the `Red Wine Quality` dataset. These datasets involve
 - quality (score between 0 and 10)
 
 **Goal:** The objective of this project is to create a robust data pipeline using DVC. This pipeline will involve:
-1. **Data Preparation:** Clean and preprocess the red wine dataset to ensure it's ready for training.
-2. **Model Training:** Develop a machine learning model using the prepared data to predict wine quality.
+
+1. **Data Preparation (`prepare_data.py`):** The `prepare_data.py` script is designed to clean and preprocess the red wine dataset. It ensures that the data is ready for training, and you can customize it to fit your specific data processing requirements.
+    ```
+    python prepare_data.py
+    ```
+
+2. **Model Training (`train.py`):** The `train.py` script utilizes parameters specified in `params.yaml` to dynamically control the model type and its parameters. Three models (logistic regression, Support vector machine and K nearest neibhours) are currently supported, and you can easily extend these configurations.
+    ```
+    python train.py
+    ```
+    
 3. **Model Evaluation:** Assess the model's performance and accuracy in predicting wine quality.
 
 Through the use of a DVC pipeline, we aim to achieve not only a well-organized and versioned project but also a reproducible and scalable workflow for future enhancements and experiments.
